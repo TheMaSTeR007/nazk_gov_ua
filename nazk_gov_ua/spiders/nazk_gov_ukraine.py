@@ -171,6 +171,7 @@ class NazkGovUkraineSpider(scrapy.Spider):
                     data_dict = dict()
                     data_dict['url'] = 'https://nazk.gov.ua/en/news/'
                     data_dict['detail_page_url'] = detail_page_url
+                    # Send request on detail page url
                     yield scrapy.Request(url=detail_page_url, cookies=self.cookies, headers=self.details_headers, method='GET', callback=self.detail_parse,
                                          meta={'impersonate': random.choice(self.browsers)}, dont_filter=True, cb_kwargs={'data_dict': data_dict})
                 # Find the URL of the next page & Handle Pagination
